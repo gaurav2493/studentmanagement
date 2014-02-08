@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+	<definition name="base.definition.xml" template="/WEB-INF/jsp/layouts/xmllayout.jsp">
+	</definition>
+
+	<definition name="base.definition.html" template="/WEB-INF/jsp/layouts/htmllayout.jsp">
+	</definition>
+
+	<definition name="homepage" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/content.jsp" />
+	</definition>
+
+	<definition name="addstudent" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/addstudent.jsp" />
+	</definition>
+
+	<definition name="submitted" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/submitted.jsp" />
+	</definition>
+
+	<definition name="addclass" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/addclass.jsp" />
+	</definition>
+
+	<definition name="addsubject" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/addsubject.jsp" />
+	</definition>
+
+	<definition name="addattendence" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/addattendence.jsp" />
+	</definition>
+	
+	<definition name="selectattendence" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/selectattendence.jsp" />
+	</definition>
+
+</tiles-definitions>

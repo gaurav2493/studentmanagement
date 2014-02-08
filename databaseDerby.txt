@@ -1,0 +1,93 @@
+ij> describe class;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+CLASS_ID            |INTEGER  |0   |10  |10    |AUTOINCRE&|NULL      |NO
+SESSION_BEGIN       |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+BRANCH              |VARCHAR  |NULL|NULL|20    |NULL      |40        |YES
+SECTION             |VARCHAR  |NULL|NULL|1     |NULL      |2         |YES
+
+5 rows selected
+ij> describe attendence;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+ROLLNO              |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
+SUBJECT_ID          |SMALLINT |NULL|NULL|50    |NULL      |100       |YES
+YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+COUNT               |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+CLASS_ID            |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+
+5 rows selected
+ij> describe rollno_subject;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+ROLLNO              |INTEGER  |0   |10  |10    |0         |NULL      |NO
+SUBJECT_ID          |SMALLINT |NULL|NULL|50    |NULL      |100       |YES
+SESSIONAL_1         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+SESSIONAL_2         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+PUT                 |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+
+6 rows selected
+
+ij> describe class_attendence;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+CLASS_ID            |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+SUBJECT_ID          |SMALLINT |NULL|NULL|20    |NULL      |40        |YES
+TOTAL_COUNT         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+
+ij> describe student_info;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+NAME                |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+FATHER_NAME         |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+MOTHER_NAME         |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+EMAIL               |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+PARENT_EMAIL        |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+COURSE              |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+BRANCH              |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+ROLLNO              |INTEGER  |0   |10  |10    |0         |NULL      |NO
+
+ij> describe users;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+USER_ID             |SMALLINT |0   |10  |5     |0         |NULL      |NO
+USERNAME            |VARCHAR  |NULL|NULL|50    |NULL      |100       |NO
+PASSWORD            |VARCHAR  |NULL|NULL|50    |NULL      |100       |NO
+ENABLED             |BOOLEAN  |NULL|NULL|1     |false     |NULL      |NO
+
+4 rows selected
+ij> describe user_roles;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+USER_ROLE_ID        |SMALLINT |0   |10  |5     |0         |NULL      |NO
+USER_ID             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+AUTHORITY           |VARCHAR  |NULL|NULL|15    |NULL      |30        |YES
+
+ij> describe fee;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+ROLLNO              |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
+YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+STATUS              |BOOLEAN  |NULL|NULL|1     |NULL      |NULL      |YES
+AMOUNT              |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
+PAY_DATE            |DATE     |0   |10  |10    |NULL      |NULL      |YES
+
+ij> describe fee_structure;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+COURSE              |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+BRANCH              |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+AMOUNT              |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
+SESSION_START       |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+
+ij> describe subject;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+SUBJECT_CODE        |SMALLINT |0   |10  |5     |PRI       |NULL      |NO
+SUBJECT_NAME        |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+
+-------------
+id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
