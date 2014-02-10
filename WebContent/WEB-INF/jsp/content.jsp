@@ -82,7 +82,7 @@
               
               
               	<hr>
-              <h4><a href="http://bootply.com/75781">Edit on Bootply</a></h4>
+              <h4><a href="#">Download app for your device</a></h4>
               	<hr>
               	
               	

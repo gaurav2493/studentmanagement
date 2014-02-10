@@ -30,7 +30,7 @@ public class FormSubmitController {
 	public String addClassParams(@RequestParam Map<String,String> allRequestParams, ModelMap model)
 	{
 		NewStuffAdder newStuffAdder=new NewStuffAdder(dataSource, allRequestParams);
-		newStuffAdder.addClass();
+		newStuffAdder.createNewClass();
 		return "submitted";
 	}
 	@RequestMapping(value="/submit_new_subject",method= RequestMethod.POST)

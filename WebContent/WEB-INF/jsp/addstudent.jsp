@@ -13,11 +13,11 @@
 		</tr>
 		<tr>
 			<td>Father's name</td>
-			<td><input type='text' name='fname' class="form-control"/></td>
+			<td><input type='text' name='fname' class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>Mother's name</td>
-			<td><input type='text' name='mname' class="form-control"/></td>
+			<td><input type='text' name='mname' class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>Email Id</td>
@@ -29,34 +29,49 @@
 		</tr>
 		<tr>
 			<td>Course</td>
-			<td><input type='text' name='course' class="form-control"/></td>
+			<td><input type='text' name='course' class="form-control" /></td>
 		</tr>
 		<tr>
 			<td>Branch</td>
-			<td><input type='text' name='branch' class="form-control"/></td>
+			<td><select name="branch" class="form-control">
+					<option value='cse'>CSE</option>
+					<option value='it'>IT</option>
+					<option value='me'>ME</option>
+					<option value='ce'>CE</option>
+					<option value='ic'>IC</option>
+					<option value='mt'>MT</option>
+			</select></td>
 		</tr>
 		<tr>
 			<td>Section</td>
-			<td><input type='text' name='section' class="form-control"/></td>
+			<td><select name="class" class="form-control">
+					<option value='a'>A</option>
+					<option value='b'>B</option>
+			</select></td>
 		</tr>
 		<tr>
 			<td>Year</td>
-			<td><input type='text' name='year' class="form-control"/></td>
+			<td><select name="year" class="form-control">
+					<option value=1>1</option>
+					<option value=2>2</option>
+					<option value=3>3</option>
+					<option value=4>4</option>
+			</select></td>
 		</tr>
 		<tr>
 			<td>Session</td>
 			<td><div class="control-group">
-            <div class="controls">
-            <select name="session">
-                <option value="2011">2011 - 2012</option>
-                <option value="2012">2012 - 2013</option>
-                <option value="2013">2013 - 2014</option>
-                <option value="2013">2014 - 2015</option>
-                <option value="2013">2015 - 2016</option>
-            </select>
-        </div>
-        </div></td>
+					<div class="controls">
+						<select name="session" class="form-control">
+							<option value="2011">2011 - 2012</option>
+							<option value="2012">2012 - 2013</option>
+							<option value="2013">2013 - 2014</option>
+							<option value="2013">2014 - 2015</option>
+							<option value="2013">2015 - 2016</option>
+						</select>
+					</div>
+				</div></td>
 		</tr>
 	</table>
-	<Input type='submit'  class="btn btn-default"/>
+	<Input type='submit' class="btn btn-default" />
 </form>

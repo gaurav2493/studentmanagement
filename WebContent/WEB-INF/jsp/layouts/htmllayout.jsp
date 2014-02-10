@@ -105,7 +105,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="/" class="navbar-brand">Bootply</a>
+      <a href="/" class="navbar-brand">Student Management System</a>
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
@@ -113,13 +113,13 @@
           <a href="#sec">Get Started</a>
         </li>
         <li>
-          <a href="#sec">Edit</a>
+          <a href="#sec">About</a>
         </li>
         <li>
-          <a href="#sec">Visualize</a>
+          <a href="#sec">Downlods</a>
         </li>
         <li>
-          <a href="#sec">Prototype</a>
+          <a href="#sec">Contact</a>
         </li>
       </ul>
     </nav>
@@ -130,9 +130,9 @@
   <div class="container">
       <div class="row">
         <div class="col-md-7">
-          <h1>Bootply
-            <p class="lead">The easiest way to apply Bootstrap</p>
-          </h1>
+          <h2>Student Management Console</h2>
+            <p class="lead"><font size=-1>The easiest way to manage students records</font></p>
+          
         </div>
         <div class="col-md-5">
             <div class="well well-lg"> 
@@ -142,7 +142,7 @@
                 </div>
                 <div class="col-sm-6">
 	              	<strong>Important</strong>
-                  	<p>Blah blah blah blah bla!</p>
+                  	<p>Source Code for the apps now available</p>
                 </div>
               </div>
             </div>

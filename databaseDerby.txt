@@ -12,7 +12,7 @@ ij> describe attendence;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 ------------------------------------------------------------------------------
 ROLLNO              |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
-SUBJECT_ID          |SMALLINT |NULL|NULL|50    |NULL      |100       |YES
+SUBJECT_ID          |varchar  |NULL|NULL|50    |NULL      |100       |YES
 YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 COUNT               |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 CLASS_ID            |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
@@ -22,7 +22,7 @@ ij> describe rollno_subject;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 ------------------------------------------------------------------------------
 ROLLNO              |INTEGER  |0   |10  |10    |0         |NULL      |NO
-SUBJECT_ID          |SMALLINT |NULL|NULL|50    |NULL      |100       |YES
+SUBJECT_ID          |varchar  |NULL|NULL|50    |NULL      |100       |YES
 SESSIONAL_1         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 SESSIONAL_2         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 PUT                 |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
@@ -34,7 +34,7 @@ ij> describe class_attendence;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 ------------------------------------------------------------------------------
 CLASS_ID            |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
-SUBJECT_ID          |SMALLINT |NULL|NULL|20    |NULL      |40        |YES
+SUBJECT_ID          |varchar  |NULL|NULL|20    |NULL      |40        |YES
 TOTAL_COUNT         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 
 ij> describe student_info;
