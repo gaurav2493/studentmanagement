@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
         <meta charset="utf-8">
-        <title>Bootply.com - Blue Template Fixed Sidebar + Header</title>
+        <title>Student Management System</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -116,7 +116,7 @@
           <a href="#sec">About</a>
         </li>
         <li>
-          <a href="#sec">Downlods</a>
+          <a href="#sec">Downloads</a>
         </li>
         <li>
           <a href="#sec">Contact</a>

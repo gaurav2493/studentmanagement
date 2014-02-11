@@ -19,7 +19,7 @@
 		var i;
 		var subfields="<table class='table table-striped'>";
 		for (i = 0; i < n; i++) {
-			subfields+="<tr><td>Subject - "+(i+1)+"</td><td><input type='text' name='stu"+i+"' class='form-control' placeholder='Roll number'/></td></tr>";
+			subfields+="<tr><td>Student - "+(i+1)+"</td><td><input type='text' name='stu"+i+"' class='form-control' placeholder='Roll number'/></td></tr>";
 		}
 		subfields+="</table>";
 		document.getElementById("roll-fields").innerHTML=subfields;
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<td>Section</td>
-					<td><select name="class" class="form-control">
+					<td><select name="section" class="form-control">
 							<option value='a'>A</option>
 							<option value='b'>B</option>
 					</select></td>

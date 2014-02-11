@@ -91,3 +91,5 @@ SUBJECT_NAME        |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
 
 -------------
 id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+
+SELECT a.COUNT,a.ROLLNO,s.NAME FROM attendence a,student_info s WHERE subject_id='ECS-501' and class_id=(select class_id from class where session_begin=2013 and year_no=1 and branch='it' and section='a') and s.rollno=a.rollno;

@@ -22,8 +22,8 @@
                 <font size=3>
               	<ul class="nav nav-stacked" id="sidebar">
                   <li><a href="selectattendence">Attendence</a></li>
-                  <li><a href="#sec2">Reports</a></li>
-                  <li><a href="#sec3">Fee Schedules</a></li>
+                  <li><a href="academicreports">Academic Reports</a></li>
+                  <li><a href="feeschedules">Fee Schedules</a></li>
                   <li><a href="addstudent">Add a Student</a></li>
               	  <li><a href="adduser">Add a User</a></li>
               	  <li><a href="addclass">Add a class</a></li>
