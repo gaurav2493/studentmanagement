@@ -20,7 +20,7 @@ public class StudentListGenerator {
 	private PreparedStatement statement = null;
 	private ResultSet resultSet;
 	private RollList rollList;
-	List<Student> studentList;
+	private List<Student> studentList;
 	
 	public StudentListGenerator(DataSource dataSource,Map<String, String> map) {
 

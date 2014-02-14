@@ -24,11 +24,6 @@ public class UserTasksController {
 		return "addsubject";
 	}
 	
-	@RequestMapping(value="/addattendence")
-	public String addAttendence()
-	{
-		return "addattendence";
-	}
 	
 	@RequestMapping(value="/selectattendence")
 	public String selectAttendence()

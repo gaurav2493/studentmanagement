@@ -44,5 +44,10 @@
 		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
 		<put-attribute name="content" value="/WEB-INF/jsp/selectattendence.jsp" />
 	</definition>
+	
+	<definition name="submitattendence" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/submitted.jsp" />
+	</definition>
 
 </tiles-definitions>
