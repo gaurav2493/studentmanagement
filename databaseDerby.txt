@@ -22,13 +22,12 @@ ij> describe rollno_subject;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 ------------------------------------------------------------------------------
 ROLLNO              |INTEGER  |0   |10  |10    |0         |NULL      |NO
-SUBJECT_ID          |varchar  |NULL|NULL|50    |NULL      |100       |YES
-SESSIONAL_1         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
-SESSIONAL_2         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
-PUT                 |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+SUBJECT_ID          |VARCHAR  |NULL|NULL|20    |NULL      |40        |YES
+EXAM_ID             |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
+MARKS               |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 
-6 rows selected
+5 rows selected
 
 ij> describe class_attendence;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
@@ -88,6 +87,12 @@ COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 ------------------------------------------------------------------------------
 SUBJECT_CODE        |SMALLINT |0   |10  |5     |PRI       |NULL      |NO
 SUBJECT_NAME        |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+
+ij> describe exam_type;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+EXAM_ID             |INTEGER  |0   |10  |10    |AUTOINCRE&|NULL      |NO
+EXAM_NAME           |VARCHAR  |NULL|NULL|20    |NULL      |40        |YES
 
 -------------
 id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),

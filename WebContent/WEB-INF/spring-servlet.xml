@@ -11,8 +11,8 @@
 
 	<import resource="datasource.xml" />
 	<mvc:resources mapping="/css/**" location="/resources/css/" />
-<mvc:resources mapping="/fonts/**" location="/resources/fonts/" />
-<mvc:resources mapping="/js/**" location="/resources/js/" />
+	<mvc:resources mapping="/fonts/**" location="/resources/fonts/" />
+	<mvc:resources mapping="/js/**" location="/resources/js/" />
 	<mvc:annotation-driven />
 	<context:annotation-config />
 	<context:component-scan base-package="com.studentmanagement.controller" />

@@ -49,5 +49,15 @@
 		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
 		<put-attribute name="content" value="/WEB-INF/jsp/submitted.jsp" />
 	</definition>
+	
+	<definition name="academicreports" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/academicreports.jsp" />
+	</definition>
+	
+	<definition name="addexam" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/addexam.jsp" />
+	</definition>
 
 </tiles-definitions>
