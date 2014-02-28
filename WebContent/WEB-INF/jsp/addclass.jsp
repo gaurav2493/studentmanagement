@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <br />
 <br />
 <script type="text/javascript">
@@ -64,11 +65,9 @@
 					<td><div class="control-group">
 							<div class="controls">
 								<select name="session" class="form-control">
-									<option value="2011">2011 - 2012</option>
-									<option value="2012">2012 - 2013</option>
-									<option value="2013">2013 - 2014</option>
-									<option value="2014">2014 - 2015</option>
-									<option value="2015">2015 - 2016</option>
+									<option value="${currentYear-1}">${currentYear-1} - ${currentYear}</option>
+									<option value="${currentYear}">${currentYear} - ${currentYear+1}</option>
+									<option value="${currentYear+1}">${currentYear+1} - ${currentYear+2}</option>
 								</select>
 							</div>
 						</div></td>

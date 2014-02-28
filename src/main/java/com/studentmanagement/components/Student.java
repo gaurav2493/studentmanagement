@@ -4,12 +4,12 @@ public class Student {
 	
 	private int rollNumber;
 	private String name;
-	private int attendenceCount;
+	private int attendanceCount;
 	
-	public Student(int rollNumber, int attendenceCount, String name) {
+	public Student(int rollNumber, int attendanceCount, String name) {
 
 		this.rollNumber=rollNumber;
-		this.attendenceCount=attendenceCount;
+		this.attendanceCount=attendanceCount;
 		this.name=name;
 	}
 	public int getRollNumber() {
@@ -18,7 +18,7 @@ public class Student {
 	public String getName() {
 		return name;
 	}
-	public int getAttendenceCount() {
-		return attendenceCount;
+	public int getAttendanceCount() {
+		return attendanceCount;
 	}
 }

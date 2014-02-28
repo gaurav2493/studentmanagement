@@ -54,7 +54,7 @@ public class NewStuffAdder {
 
 	public synchronized boolean createNewClass() {
 		addClass();
-		addRollnumbersAndAttendence();
+		addRollnumbersAndAttendance();
 		return true;
 	}
 
@@ -107,7 +107,7 @@ public class NewStuffAdder {
 		return true;
 	}
 
-	private boolean addRollnumbersAndAttendence() {
+	private boolean addRollnumbersAndAttendance() {
 		try {
 			connect = dataSource.getConnection();
 			statement = connect.prepareStatement("INSERT INTO attendence"

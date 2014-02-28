@@ -35,17 +35,17 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/addsubject.jsp" />
 	</definition>
 
-	<definition name="addattendence" extends="base.definition.html">
+	<definition name="addattendance" extends="base.definition.html">
 		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
-		<put-attribute name="content" value="/WEB-INF/jsp/addattendence.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/addattendance.jsp" />
 	</definition>
 	
-	<definition name="selectattendence" extends="base.definition.html">
+	<definition name="selectattendance" extends="base.definition.html">
 		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
-		<put-attribute name="content" value="/WEB-INF/jsp/selectattendence.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/selectattendance.jsp" />
 	</definition>
 	
-	<definition name="submitattendence" extends="base.definition.html">
+	<definition name="submitattendance" extends="base.definition.html">
 		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
 		<put-attribute name="content" value="/WEB-INF/jsp/submitted.jsp" />
 	</definition>

@@ -1,16 +1,19 @@
 package com.studentmanagement.controller;
 
+import java.util.Calendar;
 import java.util.Map;
 
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.databasemanager.NewStuffAdder;
+import com.studentmanagement.databasemanager.SubjectsChooser;
 
 @Controller
 public class CommonDataEntryController {
@@ -46,8 +49,12 @@ public class CommonDataEntryController {
 	}
 	
 	@RequestMapping(value="/addclass")
-	public String addClass()
+	public String addClass(ModelMap model)
 	{
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		Map<String, String> subjectMap=new SubjectsChooser(dataSource).getAllSubjects();
+		model.addAttribute("currentYear", new Integer(year));
+		model.addAttribute("subjectsMap", subjectMap);
 		return "addclass";
 	}
 	

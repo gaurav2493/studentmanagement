@@ -28,7 +28,7 @@ public class StudentListGenerator {
 		this.parametersMap=map;
 	}
 	
-	public RollList getAttendenceList()
+	public RollList getAttendanceList()
 	{
 		try {
 	    	connect=dataSource.getConnection();

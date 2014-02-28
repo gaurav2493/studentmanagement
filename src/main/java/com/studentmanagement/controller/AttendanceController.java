@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.components.RollList;
-import com.studentmanagement.databasemanager.AttendenceSubmitter;
+import com.studentmanagement.databasemanager.AttendanceSubmitter;
 import com.studentmanagement.databasemanager.StudentListGenerator;
 
 @Controller
@@ -23,24 +23,29 @@ public class AttendanceController {
 	DataSource dataSource;
 	
 	
-	@RequestMapping(value="/addattendence",method= RequestMethod.POST)
-	public String addAttendence(HttpServletRequest request,@RequestParam Map<String,String> allRequestParams, ModelMap model)
+	@RequestMapping(value="/addattendance",method= RequestMethod.POST)
+	public String addAttendance(HttpServletRequest request,@RequestParam Map<String,String> allRequestParams, ModelMap model)
 	{
 		StudentListGenerator studentListGenerator=new StudentListGenerator(dataSource, allRequestParams);
-		RollList rollList=studentListGenerator.getAttendenceList();
+		RollList rollList=studentListGenerator.getAttendanceList();
 		System.out.println(rollList.getStudentList().size());
 		model.addAttribute("rollList",rollList);
-		request.getSession().setAttribute("allReqParamsForAddAttendence",allRequestParams);
-		return "addattendence";
+		request.getSession().setAttribute("allReqParamsForAddAttendance",allRequestParams);
+		return "addattendance";
 	}
-	@RequestMapping(value="/submitattendence",method= RequestMethod.POST)
-	public String submitAttendence(HttpServletRequest request,@RequestParam Map<String,String> allRequestParams, ModelMap model)
+	@RequestMapping(value="/submitattendance",method= RequestMethod.POST)
+	public String submitAttendance(HttpServletRequest request,@RequestParam Map<String,String> allRequestParams, ModelMap model)
 	{
 		@SuppressWarnings("unchecked")
-		Map<String,String> attribute = (Map<String,String>)request.getSession().getAttribute("allReqParamsForAddAttendence");
-		AttendenceSubmitter attendenceSubmitter=new AttendenceSubmitter(dataSource,allRequestParams,attribute);
-		attendenceSubmitter.addToAttendence();
-		return "submitattendence";
+		Map<String,String> attribute = (Map<String,String>)request.getSession().getAttribute("allReqParamsForAddAttendance");
+		AttendanceSubmitter attendanceSubmitter=new AttendanceSubmitter(dataSource,allRequestParams,attribute);
+		attendanceSubmitter.addToAttendance();
+		return "submitattendance";
+	}
+	@RequestMapping(value="/selectattendance")
+	public String selectAttendence(ModelMap model)
+	{
+		return "selectattendance";
 	}
 
 }

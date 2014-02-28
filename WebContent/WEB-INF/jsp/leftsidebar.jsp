@@ -21,7 +21,7 @@
 <sec:authorize access="isAuthenticated()">
                 <font size=3>
               	<ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="selectattendence">Attendence</a></li>
+                  <li><a href="selectattendance">Attendance</a></li>
                   <li><a href="academicreports">Academic Reports</a></li>
                   <li><a href="feeschedules">Fee Schedules</a></li>
                   <li><a href="addstudent">Add a Student</a></li>
