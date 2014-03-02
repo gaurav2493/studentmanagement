@@ -58,20 +58,6 @@
 					<option value=4>4</option>
 			</select></td>
 		</tr>
-		<tr>
-			<td>Session</td>
-			<td><div class="control-group">
-					<div class="controls">
-						<select name="session" class="form-control">
-							<option value="2011">2011 - 2012</option>
-							<option value="2012">2012 - 2013</option>
-							<option value="2013">2013 - 2014</option>
-							<option value="2013">2014 - 2015</option>
-							<option value="2013">2015 - 2016</option>
-						</select>
-					</div>
-				</div></td>
-		</tr>
 	</table>
 	<Input type='submit' class="btn btn-default" />
 </form>

@@ -1,6 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <br />
 <br />
+<script>
+var subjectOptions="<c:forEach var="entry" items="${subjectsMap}"><option value='<c:out value="${entry.key}"/>'><c:out value="${entry.value}"/></option></c:forEach>";
+</script>
 <script type="text/javascript">
 	function createSubjectFields() {
 		var n = document.getElementById("nosubjects").value;
@@ -8,7 +11,7 @@
 		var i;
 		var subfields="<table class='table table-striped'>";
 		for (i = 0; i < n; i++) {
-			subfields+="<tr><td>Subject - "+(i+1)+"</td><td><input type='text' name='sub"+i+"' class='form-control' placeholder='Subject name'/></td></tr>";
+			subfields+="<tr><td>Subject - "+(i+1)+"</td><td><select name='sub"+i+"' class='form-control'>"+subjectOptions+"</select></td></tr>";
 		}
 		subfields+="</table>";
 		document.getElementById("subject-fields").innerHTML=subfields;	

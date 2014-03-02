@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h3>Choose Your Class</h3>
 <br />
 <form action="addattendance" method="post">
@@ -6,8 +7,9 @@
 			<td>Session</td>
 			<td><Select name="session" class="form-control">
 					<option>Session</option>
-					<option value='2012'>2012 - 2013</option>
-					<option value='2013'>2013 - 2014</option>
+					<option value="${currentYear-1}">${currentYear-1} - ${currentYear}</option>
+					<option value="${currentYear}">${currentYear} - ${currentYear+1}</option>
+					<option value="${currentYear+1}">${currentYear+1} - ${currentYear+2}</option>
 			</Select></td>
 		<tr>
 			<td>Branch</td>
@@ -37,8 +39,9 @@
 		<tr>
 			<td>Subject</td>
 			<td><select name="subject" class="form-control">
-					<option value='ECS-502'>ECS-502</option>
-					<option value='ECS-501'>ECS-501</option>
+					<c:forEach var="entry" items="${subjectsMap}">
+						<option value='<c:out value="${entry.key}"/>'><c:out value="${entry.value}"/></option>
+					</c:forEach>
 			</select></td>
 		</tr>
 	</table>

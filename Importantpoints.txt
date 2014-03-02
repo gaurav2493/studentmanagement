@@ -1,2 +1,9 @@
 While creating new subject, give error if subject id already exist.
 java.sql.SQLIntegrityConstraintViolationException: The statement was aborted because it would have caused a duplicate key value in a unique or primary key constraint or unique index identified by 'SQL140208223610970' defined on 'SUBJECT'.
+
+<attendance>
+  <subject>
+    <count></count>
+    <total></total>
+  </subject>
+</attendance>
