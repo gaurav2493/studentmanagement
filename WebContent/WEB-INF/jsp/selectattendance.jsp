@@ -45,5 +45,5 @@
 			</select></td>
 		</tr>
 	</table>
-	<input type="submit" class="btn btn-default">
+	<input type="submit" class="btn btn-default"/>
 </form>

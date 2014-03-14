@@ -59,5 +59,10 @@
 		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
 		<put-attribute name="content" value="/WEB-INF/jsp/addexam.jsp" />
 	</definition>
+	
+	<definition name="getjsonattendance" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewattendance.jsp" />
+	</definition>
 
 </tiles-definitions>

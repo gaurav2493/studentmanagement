@@ -53,12 +53,5 @@ public class AttendanceController {
 		model.addAttribute("subjectsMap", subjectMap);
 		return "selectattendance";
 	}
-	@RequestMapping(value="/getxmlattendance")
-	public String getXMLAttendance(ModelMap model,@RequestParam Map<String,String> allRequestParams)
-	{
-		
-		return "selectattendance";
-	}
 	
-
 }

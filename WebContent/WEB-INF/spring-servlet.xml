@@ -16,6 +16,7 @@
 	<mvc:annotation-driven />
 	<context:annotation-config />
 	<context:component-scan base-package="com.studentmanagement.controller" />
+	<context:component-scan base-package="com.studentmanagement.controller.jsonp" />
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass">

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class GeneralController {
 	
+	
 	@RequestMapping(value="/",method= RequestMethod.GET)
 	public String teacherlogin(ModelMap model)
 	{
@@ -20,4 +21,5 @@ public class GeneralController {
 			model.addAttribute("error", "true");
 			return "homepage";
 	}
+	
 }

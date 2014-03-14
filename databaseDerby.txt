@@ -97,4 +97,4 @@ EXAM_NAME           |VARCHAR  |NULL|NULL|20    |NULL      |40        |YES
 -------------
 id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 
-UPDATE attendence a  class_attendence c SET a.count=a.count+1,c.total=c.total+1 WHERE 	a.subject_id='ecs-502' AND a.year_no=2013 AND a.class_id=8 AND (rollno=1109113043 or false)
+select s.subject_name, a.count,c.total_count,a.year_no from attendence a, subject s,class_attendence c where rollno=1109113043 AND s.subject_code=a.subject_id AND c.class_id=a.class_id and s.subject_code=c.subject_id AND a.class_id in (SELECT class_id from class where session_begin=2013);
