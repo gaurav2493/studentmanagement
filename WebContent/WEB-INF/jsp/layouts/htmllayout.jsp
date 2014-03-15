@@ -1,4 +1,4 @@
-<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%><%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,8 +7,8 @@
         <title>Student Management System</title>
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-glyphicons.css" type="text/css" rel="stylesheet">
+        <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
+        <!-- <link href="<c:url value="/css/bootstrap-glyphicons.css" />" type="text/css" rel="stylesheet"> -->
         <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
@@ -167,10 +167,10 @@
 
 
         
-        <script type='text/javascript' src="js/jquery-1.10.2.min.js"></script>
+        <script type='text/javascript' src="<c:url value="/js/jquery-1.10.2.min.js" />"></script>
 
 
-        <script type='text/javascript' src="js/bootstrap.min.js"></script>
+        <script type='text/javascript' src="<c:url value="/js/bootstrap.min.js" />"></script>
 
 
 

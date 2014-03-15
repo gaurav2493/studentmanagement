@@ -36,8 +36,8 @@ public class AcademicMarksController {
 		examReports.createNewExam(param);
 		return "submitted";
 	}
-	@RequestMapping(value="/examreport",method=RequestMethod.GET )
-	public String examReport(ModelMap model,@RequestParam(value = "examid") String param)
+	@RequestMapping(value="/academicreports/options",method=RequestMethod.GET )
+	public String academicreportsOptions(ModelMap model,@RequestParam(value = "examid") String param)
 	{
 		//ExamReports examReports=new ExamReports(dataSource);
 		//examReports.createNewExam(param);
