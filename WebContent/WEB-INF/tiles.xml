@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
        
 <tiles-definitions>
-	<definition name="base.definition.xml" template="/WEB-INF/jsp/layouts/xmllayout.jsp">
+	<definition name="base.definition.json" template="/WEB-INF/jsp/layouts/jsonlayout.jsp">
 	</definition>
 
 	<definition name="base.definition.html" template="/WEB-INF/jsp/layouts/htmllayout.jsp">
@@ -60,8 +60,7 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/addexam.jsp" />
 	</definition>
 	
-	<definition name="getjsonattendance" extends="base.definition.html">
-		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+	<definition name="getjsonattendance" extends="base.definition.json">
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewattendance.jsp" />
 	</definition>
 
