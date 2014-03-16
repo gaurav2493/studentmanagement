@@ -64,16 +64,17 @@ public class AcademicMarksController {
 	{
 		StudentListGenerator studentListGenerator=new StudentListGenerator(dataSource, allRequestParams);
 		Map<Integer, String> rollList =studentListGenerator.getStudentList();
+		request.getSession().setAttribute("examparams", allRequestParams);
 		model.addAttribute("rollList", rollList);
 		return "insertmarks";
 	}
-	@RequestMapping(value="/academicreports/uploadmarks/submitmarks",method=RequestMethod.GET )
+	@RequestMapping(value="/academicreports/uploadmarks/submitmarks",method=RequestMethod.POST )
 	public String submitmarks(@RequestParam Map<String,String> allRequestParams,HttpServletRequest request)
 	{
 		HttpSession session=request.getSession();
 		ExamReports examReports=new ExamReports(dataSource);
 		examReports.insertMarks(allRequestParams, session);
-		return "insertmarks";
+		return "submitted";
 	}
 	
 }

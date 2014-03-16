@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
@@ -82,9 +83,21 @@ public class ExamReports {
 		
 		String sql="INSERT INTO rollno_subject(rollno,subject_id,exam_id,marks) VALUES " +
 				"(?,?,?,?)";
+		Map<String,String> allRequestParamsFromPreviousPage=(Map)session.getAttribute("examparams");
+		int examid=(Integer)session.getAttribute("examid");
 		try{
 		connect=dataSource.getConnection();
 		statement=connect.prepareStatement(sql);
+		for(Entry<String, String> e : allRequestParams.entrySet()) {
+			statement.setInt(1, Integer.parseInt(e.getKey()));
+			statement.setString(2, allRequestParamsFromPreviousPage.get("subject"));		
+			statement.setInt(3, examid);
+			statement.setInt(4, Integer.parseInt(e.getValue()));
+			statement.addBatch();
+	    }
+		
+		statement.executeBatch();
+		
 		} catch (Exception e) {
 			System.out.println(e);
 		} finally {
