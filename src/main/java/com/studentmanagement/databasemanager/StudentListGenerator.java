@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.sql.DataSource;
 
@@ -83,6 +84,40 @@ public class StudentListGenerator {
 	      close();
 	    }
 		return rollList;
+	}
+	
+	public Map<Integer,String> getStudentList()
+	{
+		String sql="SELECT a.ROLLNO,s.NAME " +
+        		"FROM attendence a,student_info s WHERE" +
+        		" a.subject_id=? and a.class_id=(select class_id from class where session_begin=? and year_no=? and branch=? and section=?) and a.rollno=s.rollno " +
+        		"ORDER BY a.ROLLNO";
+		Map<Integer,String> studentMap=null;
+		try{
+		connect=dataSource.getConnection();
+		statement = connect.prepareStatement(sql);
+		
+		statement.setString(1, parametersMap.get("subject"));
+        statement.setInt(2, Integer.parseInt(parametersMap.get("session")));
+        statement.setInt(3, Integer.parseInt(parametersMap.get("year")));
+        statement.setString(4, parametersMap.get("branch"));
+        statement.setString(5, parametersMap.get("section"));
+        
+        resultSet=statement.executeQuery();
+        studentMap=new TreeMap<Integer,String>();
+        while(resultSet.next())
+        {
+        	studentMap.put(new Integer(resultSet.getInt("rollno")), resultSet.getString("name"));
+        }
+        
+		} 
+		catch (Exception e) {
+		      
+		    } finally {
+		      close();
+		    }
+		
+		return studentMap;
 	}
 	
 	private void close() {

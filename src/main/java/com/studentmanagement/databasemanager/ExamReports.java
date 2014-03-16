@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 public class ExamReports {
@@ -21,7 +22,7 @@ public class ExamReports {
 		this.dataSource=dataSource;
 	}
 	
-	public void createNewExam(String param) {
+	public void createNewExamType(String param) {
 		
 		try {
 			examTypeMap=new HashMap<Integer, String>();
@@ -60,6 +61,7 @@ public class ExamReports {
 		return examTypeMap;
 	}
 	
+	
 	private void close() {
 		try {
 			if(res!=null){
@@ -74,6 +76,21 @@ public class ExamReports {
 		} catch (Exception e) {
 
 		}
+	}
+
+	public void insertMarks(Map<String, String> allRequestParams,HttpSession session) {
+		
+		String sql="INSERT INTO rollno_subject(rollno,subject_id,exam_id,marks) VALUES " +
+				"(?,?,?,?)";
+		try{
+		connect=dataSource.getConnection();
+		statement=connect.prepareStatement(sql);
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			close();
+		}
+		
 	}	
 
 }
