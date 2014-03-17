@@ -44,6 +44,10 @@
 					</c:forEach>
 			</select></td>
 		</tr>
+		<tr>
+			<td>Total Marks</td>
+			<td><input type="number" value='100' name="total"/></td>
+		</tr>
 	</table>
 	<input type="submit" class="btn btn-default"/>
 </form>

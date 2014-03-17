@@ -3,6 +3,8 @@ package com.studentmanagement.databasemanager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -81,18 +83,47 @@ public class ExamReports {
 
 	public void insertMarks(Map<String, String> allRequestParams,HttpSession session) {
 		
-		String sql="INSERT INTO rollno_subject(rollno,subject_id,exam_id,marks) VALUES " +
-				"(?,?,?,?)";
-		Map<String,String> allRequestParamsFromPreviousPage=(Map)session.getAttribute("examparams");
+		String sql="INSERT INTO exams(exam_id,total_marks,subject_id) VALUES (?,?,?)";
+		@SuppressWarnings("unchecked")
+		Map<String,String> allRequestParamsFromPreviousPage=(Map<String, String>)session.getAttribute("examparams");
 		int examid=(Integer)session.getAttribute("examid");
+		int total_marks=Integer.parseInt(allRequestParamsFromPreviousPage.get("total"));
+		int exam_no=0;
+				
 		try{
 		connect=dataSource.getConnection();
+		statement=connect.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+		statement.setInt(1,examid);
+		statement.setInt(2,total_marks );
+		statement.setString(3, allRequestParamsFromPreviousPage.get("subject"));
+		
+		statement.executeUpdate();
+
+		ResultSet res = statement.getGeneratedKeys();
+		
+		while (res.next())
+			exam_no = res.getInt(1);
+		
+		
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			try{
+			if(statement!=null) statement.close();
+			if(res!=null) res.close();
+			}catch(SQLException ex){}
+			
+		}
+		
+		sql="INSERT INTO rollno_subject(rollno,exam_no,marks) VALUES " +
+				"(?,?,?)";
+		
+		try{
 		statement=connect.prepareStatement(sql);
 		for(Entry<String, String> e : allRequestParams.entrySet()) {
 			statement.setInt(1, Integer.parseInt(e.getKey()));
-			statement.setString(2, allRequestParamsFromPreviousPage.get("subject"));		
-			statement.setInt(3, examid);
-			statement.setInt(4, Integer.parseInt(e.getValue()));
+			statement.setInt(2, exam_no);		
+			statement.setInt(3, Integer.parseInt(e.getValue()));
 			statement.addBatch();
 	    }
 		
