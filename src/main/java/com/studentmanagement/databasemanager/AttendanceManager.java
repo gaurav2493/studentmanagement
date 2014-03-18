@@ -30,7 +30,7 @@ public class AttendanceManager {
 		try {
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		    String name = auth.getName();
-			String sql="select s.subject_name, a.count,c.total_count,a.year_no " +
+			String sql="SELECT s.subject_name, a.count,c.total_count,a.year_no " +
 					"FROM attendence a, subject s,class_attendence c " +
 					"WHERE rollno=? AND s.subject_code=a.subject_id AND c.class_id=a.class_id and s.subject_code=c.subject_id AND a.class_id in (SELECT class_id from class where session_begin=?)";
 			connect=dataSource.getConnection();

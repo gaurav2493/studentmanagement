@@ -22,12 +22,18 @@ ij> describe rollno_subject;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
 ------------------------------------------------------------------------------
 ROLLNO              |INTEGER  |0   |10  |10    |0         |NULL      |NO
-YEAR_NO             |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
-SUBJECT_ID          |VARCHAR  |NULL|NULL|20    |NULL      |40        |YES
-EXAM_ID             |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
 MARKS               |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
 
-5 rows selected
+ij> describe exams;
+COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
+------------------------------------------------------------------------------
+EXAM_NO             |INTEGER  |0   |10  |10    |AUTOINCRE&|NULL      |NO
+EXAM_ID             |INTEGER  |0   |10  |10    |NULL      |NULL      |YES
+TOTAL_MARKS         |SMALLINT |0   |10  |5     |NULL      |NULL      |YES
+SUBJECT_ID          |VARCHAR  |NULL|NULL|50    |NULL      |100       |YES
+class_id             |       sdlgj         df
+
+SELECT r.marks, e.total_marks FROM rollno_subject r,exams e WHERE r.rollno=? AND e.exam_id=? AND e.class_id in (SELECT class_id from class where session_begin=?)
 
 ij> describe class_attendance;
 COLUMN_NAME         |TYPE_NAME|DEC&|NUM&|COLUM&|COLUMN_DEF|CHAR_OCTE&|IS_NULL&
@@ -97,4 +103,4 @@ EXAM_NAME           |VARCHAR  |NULL|NULL|20    |NULL      |40        |YES
 -------------
 id INTEGER NOT NULL GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
 
-select s.subject_name, a.count,c.total_count,a.year_no from attendence a, subject s,class_attendence c where rollno=1109113043 AND s.subject_code=a.subject_id AND c.class_id=a.class_id and s.subject_code=c.subject_id AND a.class_id in (SELECT class_id from class where session_begin=2013);
+SELECT marks from 

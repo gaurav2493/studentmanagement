@@ -1,9 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>{
-  "subject": [
-  <c:forEach var="entry" items="${subjectAttendanceList}">
+  "marks": [
+  <c:forEach var="entry" items="${marksList}">
       {
         "name": "<c:out value="${entry.getSubjectName()}" />",
-        "count": "<c:out value="${entry.getCount()}" />",
+        "count": "<c:out value="${entry.getMarks()}" />",
         "total": "<c:out value="${entry.getTotal()}" />"
       },
 	</c:forEach>

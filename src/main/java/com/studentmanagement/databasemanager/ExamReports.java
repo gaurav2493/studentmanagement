@@ -5,12 +5,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import com.studentmanagement.components.SubjectMarks;
 
 public class ExamReports {
 	
@@ -83,7 +87,7 @@ public class ExamReports {
 
 	public void insertMarks(Map<String, String> allRequestParams,HttpSession session) {
 		
-		String sql="INSERT INTO exams(exam_id,total_marks,subject_id) VALUES (?,?,?)";
+		String sql="INSERT INTO exams(exam_id,total_marks,subject_id,class_id) VALUES (?,?,?,(SELECT class_id FROM class WHERE session_begin=? AND branch=? AND year_no=? AND section=?))";
 		@SuppressWarnings("unchecked")
 		Map<String,String> allRequestParamsFromPreviousPage=(Map<String, String>)session.getAttribute("examparams");
 		int examid=(Integer)session.getAttribute("examid");
@@ -96,6 +100,10 @@ public class ExamReports {
 		statement.setInt(1,examid);
 		statement.setInt(2,total_marks );
 		statement.setString(3, allRequestParamsFromPreviousPage.get("subject"));
+		statement.setInt(4, Integer.parseInt(allRequestParamsFromPreviousPage.get("session")));
+		statement.setString(5, allRequestParamsFromPreviousPage.get("branch"));
+		statement.setInt(6, Integer.parseInt(allRequestParamsFromPreviousPage.get("year")));
+		statement.setString(7, allRequestParamsFromPreviousPage.get("section"));
 		
 		statement.executeUpdate();
 
@@ -135,6 +143,32 @@ public class ExamReports {
 			close();
 		}
 		
-	}	
+	}
+	public List<SubjectMarks> getSubjectMarks(int rollNumber,int session,int examId)
+	{
+		String sql="SELECT r.marks, e.total_marks,s.subject_name FROM rollno_subject r,exams e,subject s WHERE r.rollno=? AND e.exam_id=? AND e.class_id in (SELECT class_id from class where session_begin=?) AND s.subject_code=e.subject_id";
+		List<SubjectMarks> subjectList=null;
+		try{
+		connect=dataSource.getConnection();
+		statement=connect.prepareStatement(sql);
+		
+		statement.setInt(1, rollNumber);
+		statement.setInt(2, examId);
+		statement.setInt(3, session);
+		
+		res=statement.executeQuery();
+		subjectList=new ArrayList<SubjectMarks>();
+		
+		while(res.next())
+		{
+			subjectList.add(new SubjectMarks(res.getString("subject_name"), res.getInt("marks"), res.getInt("total_marks")));
+		}
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			close();
+		}
+		return subjectList;
+	}
 
 }

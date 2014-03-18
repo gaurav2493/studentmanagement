@@ -17,9 +17,9 @@ import com.studentmanagement.databasemanager.AttendanceManager;
 public class JsonpAttendanceController {
 	
 	@Autowired
-	DataSource dataSource;
+	private DataSource dataSource;
 	
-	@RequestMapping(value="/getjsonattendance")
+	@RequestMapping(value="/jsonp/getjsonattendance")
 	public String getXMLAttendance(ModelMap model,@RequestParam("session") int session)
 	{
 		AttendanceManager attendanceManager=new AttendanceManager(dataSource);

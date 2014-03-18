@@ -78,5 +78,13 @@
 	<definition name="getjsonattendance" extends="base.definition.json">
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewattendance.jsp" />
 	</definition>
+	
+	<definition name="jsonexamlist" extends="base.definition.json">
+		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewexamlist.jsp" />
+	</definition>
+	
+	<definition name="jsonmarks" extends="base.definition.json">
+		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewmarks.jsp" />
+	</definition>
 
 </tiles-definitions>
