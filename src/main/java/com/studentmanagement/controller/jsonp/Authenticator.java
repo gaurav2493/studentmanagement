@@ -24,8 +24,8 @@ public class Authenticator {
 	@Autowired @Qualifier("org.springframework.security.authenticationManager")
 	private AuthenticationManager authenticationManager;
 
-	@RequestMapping(value = "/login", method = {RequestMethod.GET })
-	public @ResponseBody String authentication(@RequestParam("user") String userName,@RequestParam("password") String password, HttpServletRequest request,HttpServletResponse response) {
+	@RequestMapping(value = "login", method = {RequestMethod.GET })
+	public @ResponseBody String authentication(@RequestParam("user") String userName,@RequestParam("password") String password,@RequestParam("callback") String callback, HttpServletRequest request,HttpServletResponse response) {
 		
 		 response.setContentType("application/javascript");
 		 response.setCharacterEncoding("UTF-8");
@@ -45,9 +45,9 @@ public class Authenticator {
 	        HttpSession session = request.getSession(true);
 	        session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
 	        System.out.println("success");
-	        return "sucess";
+	        return callback+"('sucess');";
 	    } catch (AuthenticationException ex) {
-	        return "fail " + ex.getMessage();
+	        return callback+"('fail');";
 	    }
 	}
 

@@ -75,6 +75,16 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/insertmarks.jsp" />
 	</definition>
 	
+	<definition name="file_upload_form" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/file_upload_form.jsp" />
+	</definition>
+	
+	<definition name="file_upload_success" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/file_upload_success.jsp" />
+	</definition>
+	
 	<definition name="getjsonattendance" extends="base.definition.json">
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewattendance.jsp" />
 	</definition>
