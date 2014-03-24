@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,30 +25,37 @@ public class NoticeManager {
 		this.dataSource=dataSource;
 	}
 	
-	public boolean addNotice(String content,String author,String subject)
+	public int addNotice(String content,String author,String subject,boolean attachment)
 	{
-		String sql="INSERT INTO notice(NOTICE,AUTHOR,TIMESTAMP,SUBJECT) VALUES " +
-				"(?,?,?,?)";
+		String sql="INSERT INTO notice(NOTICE,AUTHOR,TIMESTAMP,SUBJECT,ATTACHMENT) VALUES " +
+				"(?,?,?,?,?)";
+		int noticeId=-1;
 		try{
 			connect=dataSource.getConnection();
-			statement=connect.prepareStatement(sql);
+			statement=connect.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			
 			statement.setString(1, content);
 			statement.setString(2, author);
 			statement.setDate(3, new Date(new java.util.Date().getTime()));
 			statement.setString(4, subject);
+			statement.setBoolean(5, attachment);
 			
 			statement.executeUpdate();
+			
+			res=statement.getGeneratedKeys();
+			
+			if(res.next())
+				noticeId=res.getInt(1);
 			
 		}catch(SQLException ex)
 		{
 			System.out.println(ex);
-			return false;
+			return noticeId;
 		}
 		finally{
 			close();
 		}
-		return true;
+		return noticeId;
 	}
 	
 	public List<Notice> getNoticeList(int begin,int end)

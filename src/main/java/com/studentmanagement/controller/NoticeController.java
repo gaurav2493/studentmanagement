@@ -24,7 +24,7 @@ public class NoticeController {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String author=auth.getName();
 		NoticeManager noticeManager=new NoticeManager(dataSource);
-		noticeManager.addNotice(content, author,subject);
+		noticeManager.addNotice(content, author,subject,false);
 		return "submitted";
 	}
 	
