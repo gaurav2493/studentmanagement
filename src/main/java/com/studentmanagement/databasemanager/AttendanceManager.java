@@ -35,6 +35,7 @@ public class AttendanceManager {
 					"WHERE rollno=? AND s.subject_code=a.subject_id AND c.class_id=a.class_id and s.subject_code=c.subject_id AND a.class_id in (SELECT class_id from class where session_begin=?)";
 			connect=dataSource.getConnection();
 			statement=connect.prepareStatement(sql);
+			
 			statement.setInt(1, Integer.parseInt(name));
 			statement.setInt(2, session);
 			res=statement.executeQuery();

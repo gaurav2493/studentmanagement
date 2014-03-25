@@ -16,9 +16,7 @@
 
 	<bean id="fileSaveUrl" class="java.lang.String">
 		<constructor-arg>
-			<value>
-				C:/Users/Devesh/Desktop/
-			</value>
+			<value>C:/Users/Devesh/Desktop/</value>
 		</constructor-arg>
 	</bean>
 
