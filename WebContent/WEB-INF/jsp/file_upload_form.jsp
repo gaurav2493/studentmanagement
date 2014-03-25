@@ -1,5 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <script
 src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>
@@ -16,7 +17,7 @@ $(document).ready(function() {
 });
 </script>
 
-<h1>Upload File</h1>
+<h1>Upload Notice</h1>
 <script src='<c:url value="/tinymce/"/>tinymce.min.js'></script>
 <script>
         tinymce.init({selector:'textarea',
@@ -25,8 +26,7 @@ $(document).ready(function() {
 		});	
 </script>
 
-
-<form:form method="post" action="save" modelAttribute="uploadForm" enctype="multipart/form-data">
+<form method="post" action="<c:url value="/notice/uploadnotice" />" id="iploadForm" enctype="multipart/form-data">
  
  	<input type="text" name="subject" class='form-control' placeholder="Enter subject"/><br/>
 	<textarea name="content"></textarea><br/>
@@ -41,4 +41,4 @@ $(document).ready(function() {
     </table><br/><br/>
      <input id="addFile" type="button" value="Add more files to upload" class="btn btn-lg btn-primary" />
      <br/><br/><input type="submit" value="Upload Notice" class="btn btn-default"/>
-</form:form>
+</form>

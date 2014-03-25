@@ -18,7 +18,7 @@ public class NoticeController {
 	@Autowired
 	DataSource dataSource;
 	
-	@RequestMapping(value="/notice/uploadnotice",method=RequestMethod.POST)
+	@RequestMapping(value="temp/notice/uploadnotice",method=RequestMethod.POST)
 	public String uploadNotice(@RequestParam("content") String content,@RequestParam("subject") String subject)
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -28,7 +28,7 @@ public class NoticeController {
 		return "submitted";
 	}
 	
-	@RequestMapping(value="/notice/uploadpage")
+	@RequestMapping(value="temp/notice/uploadpage")
 	public String uploadPage()
 	{
 		return "noticeuploadpage";

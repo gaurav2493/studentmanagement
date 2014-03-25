@@ -60,7 +60,7 @@ public class NoticeManager {
 	
 	public List<Notice> getNoticeList(int begin,int end)
 	{
-		String sql="SELECT NOTICE_ID,AUTHOR,TIMESTAMP,SUBJECT FROM notice  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+		String sql="SELECT NOTICE_ID,AUTHOR,TIMESTAMP,SUBJECT,ATTACHMENT FROM notice  OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
 		List<Notice> noticeList=new ArrayList<Notice>();
 		try{
 			connect=dataSource.getConnection();
@@ -78,6 +78,7 @@ public class NoticeManager {
 				notice.setDate(res.getDate("timestamp"));
 				notice.setNotice_id(res.getInt("notice_id"));
 				notice.setSubject(res.getString("subject"));
+				notice.setAttachment(res.getBoolean("attachment"));
 				
 				noticeList.add(notice);
 			}			

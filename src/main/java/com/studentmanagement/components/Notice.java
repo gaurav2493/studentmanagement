@@ -9,6 +9,7 @@ public class Notice {
 	private String notice;
 	private String author;
 	private Date date;
+	private boolean attachment;
 	
 	public int getNotice_id() {
 		return notice_id;
@@ -39,6 +40,12 @@ public class Notice {
 	}
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	public boolean isAttachment() {
+		return attachment;
+	}
+	public void setAttachment(boolean attachment) {
+		this.attachment = attachment;
 	}
 	
 	

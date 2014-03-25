@@ -2,15 +2,19 @@ package com.studentmanagement.databasemanager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Map;
 
 import javax.sql.DataSource;
+
+import com.studentmanagement.components.File;
 
 public class FileManager {
 
 	private DataSource dataSource;
 	private Connection connect;
 	private PreparedStatement statement;
+	private ResultSet res;
 
 	public FileManager(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -41,10 +45,46 @@ public class FileManager {
 			close();
 		}
 	}
+	
+	public File downloadFile(int noticeId,int seqNo)
+	{
+		String sql="SELECT FILE_NAME,TIMESTAMP FROM files WHERE NOTICE_ID=? AND SEQUENCE_NO=?";
+		long timeStamp=0;
+		String fileName="";
+		File file=null;
+		try{
+			connect=dataSource.getConnection();
+			statement=connect.prepareStatement(sql);
+			statement.setInt(1, noticeId);
+			statement.setInt(2, seqNo);
+			res=statement.executeQuery();
+			
+			if(res.next())
+			{
+				timeStamp=res.getLong("timestamp");
+				fileName=res.getString("file_name");
+			}      
+	        file=new File();
+	        file.setFileName(fileName);
+	        file.setHeaderKey("Content-Disposition");
+	        file.setHeaderValue(String.format("attachment; filename=\"%s\"",fileName));
+	        file.setSavedFileName(timeStamp);
+	        
+			
+		}catch(Exception ex){
+			
+		}
+		finally{
+			close();
+		}
+		 return file;
+	}
 
 	private void close() {
 		try {
-
+			if (res != null) {
+				res.close();
+			}
 			if (statement != null) {
 				statement.close();
 			}
