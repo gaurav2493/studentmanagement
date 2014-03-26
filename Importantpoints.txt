@@ -9,5 +9,10 @@ java.sql.SQLIntegrityConstraintViolationException: The statement was aborted bec
 </attendance>
 
 DELETE column yearno from attendence
+delete column course
+validation
+branches loose coupling
+
+
 
 submit marks -- class id can be added, year removed.
