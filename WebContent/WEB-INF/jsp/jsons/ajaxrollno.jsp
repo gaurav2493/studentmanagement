@@ -1,0 +1,1 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>{<c:forEach var="entry" items="${rollList}">"list":{"${entry}",</c:forEach>"1109113010"}}

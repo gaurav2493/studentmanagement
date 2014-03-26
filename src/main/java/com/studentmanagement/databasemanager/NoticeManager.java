@@ -124,7 +124,9 @@ public class NoticeManager {
 	}
 	private void close() {
 		try {
-
+			if (res != null) {
+				res.close();
+			}
 			if (statement != null) {
 				statement.close();
 			}
