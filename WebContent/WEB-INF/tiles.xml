@@ -131,6 +131,10 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewnotices.jsp" />
 	</definition>
 	
+	<definition name="jsonnotice" extends="base.definition.json">
+		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewnotice.jsp" />
+	</definition>
+	
 	<definition name="ajaxrollno" extends="base.definition.json">
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/ajaxrollno.jsp" />
 	</definition>

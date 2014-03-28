@@ -29,11 +29,12 @@ public class JsonpNoticeController {
 		return "viewjsonnotices";
 	}
 	@RequestMapping(value="/jsonp/viewnotice")
-	public String viewNotice(@RequestParam("notice_id") int noticeId,ModelMap model)
+	public String viewNotice(@RequestParam("notice_id") int noticeId,ModelMap model,@RequestParam("callback") String callback)
 	{
 		NoticeManager noticeManager=new NoticeManager(dataSource);
 		Notice notice=noticeManager.viewNotice(noticeId);
 		model.addAttribute("notice", notice);
+		model.addAttribute("callback", callback);
 		return "jsonnotice";
 	}
 	
