@@ -1,6 +1,7 @@
 package com.studentmanagement.controller;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.studentmanagement.components.StudentsSubjectMarks;
 import com.studentmanagement.databasemanager.ExamReports;
 import com.studentmanagement.databasemanager.StudentListGenerator;
 import com.studentmanagement.databasemanager.SubjectsChooser;
@@ -75,6 +77,26 @@ public class AcademicMarksController {
 		ExamReports examReports=new ExamReports(dataSource);
 		examReports.insertMarks(allRequestParams, session);
 		return "submitted";
+	}	
+	@RequestMapping(value="/academicreports/viewmarks")
+	public String viewMarks(ModelMap model)
+	{
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		Map<String, String> subjectMap=new SubjectsChooser(dataSource).getAllSubjects();
+		model.addAttribute("currentYear", new Integer(year));
+		model.addAttribute("subjectsMap", subjectMap);
+		return "viewmarks";
 	}
+	@RequestMapping(value="/academicreports/uploadmarks/viewfetchedmarks")
+	public String viewFetchedMarks(@RequestParam Map<String,String> allRequestParams,ModelMap model,HttpServletRequest request)
+	{
+		ExamReports examReports=new ExamReports(dataSource);
+		int examid=(Integer)request.getSession().getAttribute("examid");
+		List<StudentsSubjectMarks> list = examReports.getStudentsSubjectMarksList(allRequestParams,examid);
+		model.addAttribute("subjectmarkslist", list);
+		
+		return "viewfetchedmarks";
+	}
+	
 	
 }

@@ -24,6 +24,7 @@ public class RollNoFindController {
 	{
 		RollNoListGenerator rollNoListGenerator=new RollNoListGenerator(dataSource);
 		List<String> list = rollNoListGenerator.getRollNoList(start, count);
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.setContentType("application/json");
 		model.addAttribute("rollList",list);
 		return "ajaxrollno";
@@ -34,6 +35,7 @@ public class RollNoFindController {
 		RollNoListGenerator rollNoListGenerator=new RollNoListGenerator(dataSource);
 		boolean exist=rollNoListGenerator.validateRollNo(rollno);
 		response.setContentType("application/json");
+		response.addHeader("Access-Control-Allow-Origin", "*");
 		model.addAttribute("exist", exist);
 		return "ajaxvalidaterollno";
 	}

@@ -24,7 +24,7 @@ public class Authenticator {
 	@Autowired @Qualifier("org.springframework.security.authenticationManager")
 	private AuthenticationManager authenticationManager;
 
-	@RequestMapping(value = "login", method = {RequestMethod.GET })
+	@RequestMapping(value = "/login", method = {RequestMethod.GET })
 	public @ResponseBody String authentication(@RequestParam("user") String userName,@RequestParam("password") String password,@RequestParam("callback") String callback, HttpServletRequest request,HttpServletResponse response) {
 		
 		 response.setContentType("application/javascript");

@@ -1,0 +1,48 @@
+<html>
+<head>
+<script src="jquery-1.10.2.min.js"></script>
+<script>
+function callme()
+{
+       document.getElementById("loadImg").width="20";
+       document.getElementById("loadImg").height="20";
+       var rollno=document.getElementById("id").value;
+       alert(rollno);
+       
+       $("#id").change(function(){
+               $.ajax({url:"http://localhost:9080/serverApp/ajax/getrollno?start=11&count=10",success:function(result){
+                       //$("#div1").html(result);
+                       
+                       alert(result);
+                       
+                       
+}});
+});
+
+       if(rollno==1109113019)
+       {
+               document.getElementById("loadImg").src="images/tick.png";
+       }
+       else
+       {
+               document.getElementById("loadImg").src="images/cross.png";
+       }
+}
+</script>
+</head>
+<body>
+
+<form action="demo_form.asp" method="get">
+<input type="text" list="browsers" name="browser"  value="" id="id" onchange="callme()"><img src="images/loading.gif" width="0" height="0" id="loadImg">
+<datalist id="browsers">
+ <option value="Internet Explorer">
+ <option value="Firefox">
+ <option value="Chrome">
+ <option value="Opera">
+ <option value="Safari">
+</datalist>
+<input type="text"   onchange="callme()">
+<input type="submit">
+</form>
+</body>
+</html>

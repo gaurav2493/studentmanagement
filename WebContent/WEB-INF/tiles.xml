@@ -95,6 +95,16 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/file_upload_form.jsp" />
 	</definition>
 	
+	<definition name="viewmarks" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/viewmarks.jsp" />
+	</definition>
+	
+	<definition name="viewfetchedmarks" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/showsubjectmarks.jsp" />
+	</definition>
+	
 	<definition name="getjsonattendance" extends="base.definition.json">
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewattendance.jsp" />
 	</definition>

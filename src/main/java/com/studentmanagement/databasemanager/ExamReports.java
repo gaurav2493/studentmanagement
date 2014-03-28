@@ -14,6 +14,7 @@ import java.util.Map.Entry;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+import com.studentmanagement.components.StudentsSubjectMarks;
 import com.studentmanagement.components.SubjectMarks;
 
 public class ExamReports {
@@ -169,6 +170,44 @@ public class ExamReports {
 			close();
 		}
 		return subjectList;
+	}
+	public List<StudentsSubjectMarks> getStudentsSubjectMarksList(Map<String, String> formParams,int examid)
+	{
+		String sql="SELECT r.rollno,i.name,s.subject_name,r.marks,e.total_marks FROM " +
+				"exams e,rollno_subject r,subject s, student_info i " +
+				"WHERE e.class_id in (SELECT class_id FROM class WHERE session_begin=? AND branch=? AND section=?) " +
+				"AND e.subject_id=? and s.subject_code=e.subject_id AND i.rollno=r.rollno AND e.exam_id=?";
+		List<StudentsSubjectMarks> list=null;
+		try{
+			connect=dataSource.getConnection();
+			statement=connect.prepareStatement(sql);
+			statement.setInt(1, Integer.parseInt(formParams.get("session")));
+			statement.setString(2, formParams.get("branch"));
+			statement.setString(3, formParams.get("section"));
+			statement.setString(4, formParams.get("subject"));
+			statement.setInt(5, examid);
+			
+			res=statement.executeQuery();
+			
+			list=new ArrayList<StudentsSubjectMarks>();
+			while(res.next())
+			{
+				StudentsSubjectMarks studentsSubjectMarks=new StudentsSubjectMarks();
+				studentsSubjectMarks.setName(res.getString("name"));
+				studentsSubjectMarks.setObtainedMarks(res.getInt("marks"));
+				studentsSubjectMarks.setSubjectName(res.getString("subject_name"));
+				studentsSubjectMarks.setTotal_marks(res.getInt("total_marks"));
+				studentsSubjectMarks.setRollno(res.getInt("rollno"));
+				list.add(studentsSubjectMarks);
+				
+			}			
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+		return list;
 	}
 
 }

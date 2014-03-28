@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <h3>Choose Your Class</h3>
 <br />
-<form action='<c:url value="/academicreports/showmarks"></c:url>' method="post">
+<form action='<c:url value="/academicreports/uploadmarks/viewfetchedmarks"></c:url>' method="post">
 	<table class="table table-striped">
 		<tr>
 			<td>Session</td>

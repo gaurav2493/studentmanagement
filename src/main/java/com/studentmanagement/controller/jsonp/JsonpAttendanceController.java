@@ -20,11 +20,12 @@ public class JsonpAttendanceController {
 	private DataSource dataSource;
 	
 	@RequestMapping(value="/jsonp/getjsonattendance")
-	public String getXMLAttendance(ModelMap model,@RequestParam("session") int session)
+	public String getXMLAttendance(ModelMap model,@RequestParam("session") int session,@RequestParam("callback") String callback)
 	{
 		AttendanceManager attendanceManager=new AttendanceManager(dataSource);
 		List<SubjectAttendance> subjectAttendanceList= attendanceManager.getAllSubjectAttendance(session);
 		model.addAttribute("subjectAttendanceList", subjectAttendanceList);
+		model.addAttribute("callback", callback);
 		return "getjsonattendance";
 	}
 
