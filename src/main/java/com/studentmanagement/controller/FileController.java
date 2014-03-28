@@ -17,13 +17,16 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.studentmanagement.components.FileUploadForm;
+import com.studentmanagement.components.Notice;
 import com.studentmanagement.databasemanager.FileManager;
 import com.studentmanagement.databasemanager.NoticeManager;
 
@@ -120,6 +123,23 @@ public class FileController {
 			ex.printStackTrace();
 		}
 		
+	}
+	@RequestMapping(value="/notice/viewnotices/{pageno}")
+	public String viewNotices(@PathVariable("pageno") int pageNo,ModelMap model)
+	{
+		NoticeManager noticeManager=new NoticeManager(dataSource);
+		List<Notice> noticeList =  noticeManager.getNoticeList(10*(pageNo-1), 10);
+		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("pageno", pageNo);
+		return "viewnotices";
+	}
+	@RequestMapping(value="/notice/viewnotice/{noticeId}")
+	public String viewNotice(@PathVariable("noticeId") int noticeId,ModelMap model)
+	{
+		NoticeManager noticeManager=new NoticeManager(dataSource);
+		Notice notice=noticeManager.viewNotice(noticeId);
+		model.addAttribute("notice", notice);
+		return "shownotice";
 	}
 
 }

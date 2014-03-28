@@ -105,6 +105,16 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/showsubjectmarks.jsp" />
 	</definition>
 	
+	<definition name="viewnotices" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/viewnotices.jsp" />
+	</definition>
+	
+	<definition name="shownotice" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/shownotice.jsp" />
+	</definition>
+	
 	<definition name="getjsonattendance" extends="base.definition.json">
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewattendance.jsp" />
 	</definition>

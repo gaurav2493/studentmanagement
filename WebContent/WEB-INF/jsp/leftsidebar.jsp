@@ -29,6 +29,7 @@
               	  <li><a href="<c:url value="/addclass" />">Add a class</a></li>
               	  <li><a href="<c:url value="/addsubject" />">Add a Subject</a></li>
               	  <li><a href="<c:url value="/notice/uploadpage" />">Upload a Notice</a></li>
+              	  <li><a href="<c:url value="/notice/viewnotices/1" />">View Notices</a></li>
                   <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
               	</ul>
               	</font>

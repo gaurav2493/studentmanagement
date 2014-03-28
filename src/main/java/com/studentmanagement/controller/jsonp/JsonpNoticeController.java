@@ -24,7 +24,6 @@ public class JsonpNoticeController {
 	{
 		NoticeManager noticeManager=new NoticeManager(dataSource);
 		List<Notice> noticeList =  noticeManager.getNoticeList(10*(pageNo-1), 10);
-		System.out.println(noticeList.get(0).getAuthor());
 		model.addAttribute("noticeList", noticeList);
 		model.addAttribute("callback", callback);
 		return "viewjsonnotices";

@@ -1,6 +1,7 @@
 package com.studentmanagement.components;
 
 import java.util.Date;
+import java.util.Map;
 
 public class Notice {
 
@@ -10,6 +11,7 @@ public class Notice {
 	private String author;
 	private Date date;
 	private boolean attachment;
+	private Map<String, Integer> attachmentMap;
 	
 	public int getNotice_id() {
 		return notice_id;
@@ -47,6 +49,10 @@ public class Notice {
 	public void setAttachment(boolean attachment) {
 		this.attachment = attachment;
 	}
-	
-	
+	public Map<String, Integer> getAttachmentMap() {
+		return attachmentMap;
+	}
+	public void setAttachmentMap(Map<String, Integer> attachmentMap) {
+		this.attachmentMap = attachmentMap;
+	}	
 }
