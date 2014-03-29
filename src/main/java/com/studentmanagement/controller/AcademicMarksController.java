@@ -67,6 +67,11 @@ public class AcademicMarksController {
 		StudentListGenerator studentListGenerator=new StudentListGenerator(dataSource, allRequestParams);
 		Map<Integer, String> rollList =studentListGenerator.getStudentList();
 		request.getSession().setAttribute("examparams", allRequestParams);
+		if(rollList.size()==0)
+		{
+			model.addAttribute("message", "The class you are looking for is not found.<br/> If you are sure this is your class, create a new class from left sidebar");
+			return "somethingwentwrong";
+		}
 		model.addAttribute("rollList", rollList);
 		return "insertmarks";
 	}
