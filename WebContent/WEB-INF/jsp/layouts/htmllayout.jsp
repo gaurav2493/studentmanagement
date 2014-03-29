@@ -8,6 +8,7 @@
         <meta name="generator" content="Bootply" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
+         <script type='text/javascript' src="<c:url value="/js/jquery-1.10.2.min.js" />"></script>
         <!-- <link href="<c:url value="/css/bootstrap-glyphicons.css" />" type="text/css" rel="stylesheet"> -->
         <!--[if lt IE 9]>
           <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -162,7 +163,7 @@
 
 
         
-        <script type='text/javascript' src="<c:url value="/js/jquery-1.10.2.min.js" />"></script>
+       
 
 
         <script type='text/javascript' src="<c:url value="/js/bootstrap.min.js" />"></script>

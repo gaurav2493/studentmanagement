@@ -20,7 +20,7 @@ public class RollNoFindController {
 	private DataSource dataSource;
 	
 	@RequestMapping(value="/ajax/getrollno")
-	public String getRollNoList(@RequestParam("count") int count,@RequestParam("start") String start,ModelMap model,HttpServletResponse response)
+	public String getRollNoList(@RequestParam("count") int count,@RequestParam("term") String start,ModelMap model,HttpServletResponse response)
 	{
 		RollNoListGenerator rollNoListGenerator=new RollNoListGenerator(dataSource);
 		List<String> list = rollNoListGenerator.getRollNoList(start, count);
