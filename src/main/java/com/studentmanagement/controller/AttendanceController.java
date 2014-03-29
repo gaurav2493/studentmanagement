@@ -30,8 +30,13 @@ public class AttendanceController {
 	{
 		StudentListGenerator studentListGenerator=new StudentListGenerator(dataSource, allRequestParams);
 		RollList rollList=studentListGenerator.getAttendanceList();
-		System.out.println(rollList.getStudentList().size());
 		model.addAttribute("rollList",rollList);
+		if(rollList==null)
+		{
+			model.addAttribute("message", "The class you are looking for is not found.<br/> If you are sure this is your class, create a new class from left sidebar");
+			return "somethingwentwrong";
+		}
+			
 		request.getSession().setAttribute("allReqParamsForAddAttendance",allRequestParams);
 		return "addattendance";
 	}
