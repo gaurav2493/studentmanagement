@@ -46,7 +46,7 @@
 		</tr>
 		<tr>
 			<td>Total Marks</td>
-			<td><input type="number" value='100' name="total"/></td>
+			<td><input type="number" value='100' name="total" class="btn btn-default"/></td>
 		</tr>
 	</table>
 	<input type="submit" class="btn btn-default"/>

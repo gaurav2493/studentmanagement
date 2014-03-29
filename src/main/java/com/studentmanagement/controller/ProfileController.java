@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.components.Profile;
+import com.studentmanagement.databasemanager.NewStuffAdder;
 import com.studentmanagement.databasemanager.ProfileManager;
 
 @Controller
@@ -25,5 +26,16 @@ public class ProfileController {
 		model.addAttribute("profile", profile);
 		return "getprofile";
 	}
-
+	@RequestMapping(value="/adduser")
+	public String addUser()
+	{
+		return "adduser";
+	}
+	@RequestMapping(value="/adduser/submit")
+	public String addUserSubmit(@RequestParam("username") String username,@RequestParam("password") String password,@RequestParam("role") String role)
+	{
+		NewStuffAdder newStuffAdder=new NewStuffAdder(dataSource);
+		newStuffAdder.addUser(username, password, role);
+		return "submitted";
+	}
 }

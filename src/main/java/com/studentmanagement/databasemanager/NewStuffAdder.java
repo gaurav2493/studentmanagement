@@ -26,6 +26,10 @@ public class NewStuffAdder {
 
 	}
 
+	public NewStuffAdder(DataSource dataSource) {
+		this.dataSource=dataSource;
+	}
+
 	public boolean addStudent() {
 		try {
 			connect = dataSource.getConnection();
@@ -176,6 +180,27 @@ public class NewStuffAdder {
 			close();
 		}
 		return true;
+	}
+	public void addUser(String username,String password,String authority)
+	{
+		try{
+		connect=dataSource.getConnection();
+		String sql="INSERT INTO users(username,password,authority,enabled) VALUES (?,?,?,?)";
+		MessageDigestPasswordEncoder encoder = new MessageDigestPasswordEncoder("SHA-1");
+		String hash = encoder.encodePassword(password, "");
+		statement=connect.prepareStatement(sql);
+		statement.setString(1, username);
+		statement.setString(2, hash);
+		statement.setString(3, authority);
+		statement.setBoolean(4, true);
+		
+		statement.executeUpdate();
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+		}finally{
+			close();
+		}
 	}
 
 	private void close() {

@@ -12,7 +12,7 @@
 			<tr>
 				<td><c:out value="${entry.key}"/></td>
 				<td><c:out value="${entry.value}"/></td>
-				<td><input type="number" name='<c:out value="${entry.key}"/>' /></td>
+				<td><input type="number" name='<c:out value="${entry.key}"/>' class="btn btn-default"/></td>
 			</tr>
 		</c:forEach>
 	</table>

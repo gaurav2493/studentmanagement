@@ -115,6 +115,11 @@
 		<put-attribute name="content" value="/WEB-INF/jsp/shownotice.jsp" />
 	</definition>
 	
+	<definition name="adduser" extends="base.definition.html">
+		<put-attribute name="leftsidebar" value="/WEB-INF/jsp/leftsidebar.jsp" />
+		<put-attribute name="content" value="/WEB-INF/jsp/adduser.jsp" />
+	</definition>
+	
 	<definition name="getjsonattendance" extends="base.definition.json">
 		<put-attribute name="content" value="/WEB-INF/jsp/jsons/mobileviewattendance.jsp" />
 	</definition>
