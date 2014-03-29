@@ -28,10 +28,6 @@
 			<td><input type='email' name='pemail' class="form-control" /></td>
 		</tr>
 		<tr>
-			<td>Course</td>
-			<td><input type='text' name='course' class="form-control" /></td>
-		</tr>
-		<tr>
 			<td>Branch</td>
 			<td><select name="branch" class="form-control">
 					<option value='cse'>CSE</option>

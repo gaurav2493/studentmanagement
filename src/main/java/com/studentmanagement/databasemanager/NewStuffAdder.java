@@ -9,6 +9,8 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.security.authentication.encoding.MessageDigestPasswordEncoder;
+
 public class NewStuffAdder {
 
 	private Connection connect = null;
@@ -29,18 +31,29 @@ public class NewStuffAdder {
 			connect = dataSource.getConnection();
 			statement = connect
 					.prepareStatement("INSERT INTO student_info"
-							+ "(NAME,FATHER_NAME,MOTHER_NAME,EMAIL,PARENT_EMAIL,COURSE,BRANCH,ROLLNO) "
-							+ "VALUES(?,?,?,?,?,?,?,?)");
+							+ "(NAME,FATHER_NAME,MOTHER_NAME,EMAIL,PARENT_EMAIL,BRANCH,ROLLNO) "
+							+ "VALUES(?,?,?,?,?,?,?)");
 
 			statement.setString(1, map.get("name"));
 			statement.setString(2, map.get("fname"));
 			statement.setString(3, map.get("mname"));
 			statement.setString(4, map.get("email"));
 			statement.setString(5, map.get("pemail"));
-			statement.setString(6, map.get("course"));
-			statement.setString(7, map.get("branch"));
-			statement.setInt(8, Integer.parseInt(map.get("rollno")));
+			statement.setString(6, map.get("branch"));
+			statement.setInt(7, Integer.parseInt(map.get("rollno")));
 
+			statement.executeUpdate();
+			
+			if(statement!=null) statement.close();
+			String sql="INSERT INTO users(username,password,authority,enabled) VALUES (?,?,?,?)";
+			MessageDigestPasswordEncoder encoder = new MessageDigestPasswordEncoder("SHA-1");
+			String password = encoder.encodePassword(map.get("rollno"), "");
+			statement=connect.prepareStatement(sql);
+			statement.setString(1, map.get("rollno"));
+			statement.setString(2, password);
+			statement.setString(3, "ROLE_USER");
+			statement.setBoolean(4, true);
+			
 			statement.executeUpdate();
 
 		} catch (Exception e) {
