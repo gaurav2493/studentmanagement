@@ -147,7 +147,7 @@ public class ExamReports {
 	}
 	public List<SubjectMarks> getSubjectMarks(int rollNumber,int session,int examId)
 	{
-		String sql="SELECT r.marks, e.total_marks,s.subject_name FROM rollno_subject r,exams e,subject s WHERE r.rollno=? AND e.exam_id=? AND e.class_id in (SELECT class_id from class where session_begin=?) AND s.subject_code=e.subject_id";
+		String sql="SELECT r.marks, e.total_marks,s.subject_name FROM rollno_subject r,exams e,subject s WHERE r.rollno=? AND e.exam_id=? AND e.class_id in (SELECT class_id from class where session_begin=? ) AND s.subject_code=e.subject_id";
 		List<SubjectMarks> subjectList=null;
 		try{
 		connect=dataSource.getConnection();
@@ -175,7 +175,7 @@ public class ExamReports {
 	{
 		String sql="SELECT r.rollno,i.name,s.subject_name,r.marks,e.total_marks FROM " +
 				"exams e,rollno_subject r,subject s, student_info i " +
-				"WHERE e.class_id in (SELECT class_id FROM class WHERE session_begin=? AND branch=? AND section=?) " +
+				"WHERE e.class_id in (SELECT class_id FROM class WHERE session_begin=? AND branch=? AND section=? AND year_no=?) " +
 				"AND e.subject_id=? and s.subject_code=e.subject_id AND i.rollno=r.rollno AND e.exam_id=?";
 		List<StudentsSubjectMarks> list=null;
 		try{
@@ -184,8 +184,9 @@ public class ExamReports {
 			statement.setInt(1, Integer.parseInt(formParams.get("session")));
 			statement.setString(2, formParams.get("branch"));
 			statement.setString(3, formParams.get("section"));
-			statement.setString(4, formParams.get("subject"));
-			statement.setInt(5, examid);
+			statement.setInt(4, Integer.parseInt(formParams.get("year")));
+			statement.setString(5, formParams.get("subject"));
+			statement.setInt(6, examid);
 			
 			res=statement.executeQuery();
 			
