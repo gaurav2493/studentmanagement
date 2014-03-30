@@ -1,3 +1,13 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script>
+$(document).ready(function(){
+  $("#rollid").on("input",function(){
+    $.ajax({url:"<c:url value="/ajax/validaterollno" />?rollno="+$("#rollid").val(),success:function(result){
+      alert(result);
+    }});
+  });
+});
+</script>
 <center>
 	<h1>Enter new student detail</h1>
 </center>
@@ -9,7 +19,7 @@
 		</tr>
 		<tr>
 			<td>Roll no</td>
-			<td><input type='text' name='rollno' class="form-control" /></td>
+			<td><input type='text' name='rollno' class="form-control" id='rollid'/></td>
 		</tr>
 		<tr>
 			<td>Father's name</td>

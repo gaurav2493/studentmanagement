@@ -4,9 +4,9 @@
 
 <table class="table table-striped">
 	<tr>
-		<td>Subject</td>
-		<td>Date</td>
-		<td>Author</td>
+		<th>Subject</th>
+		<th>Date</th>
+		<th>Author</th>
 	</tr>
 	<c:forEach var="entry" items="${noticeList}">
 		<tr>
@@ -17,7 +17,7 @@
 						</c:when>
 					</c:choose></a></td>
 
-			<td>${entry.getDate()}</td>
+			<td><font color="green">${entry.getDate()}</font></td>
 			<td>${entry.getAuthor()}</td>
 		</tr>
 	</c:forEach>

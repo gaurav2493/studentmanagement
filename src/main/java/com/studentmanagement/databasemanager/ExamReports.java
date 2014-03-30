@@ -147,7 +147,7 @@ public class ExamReports {
 	}
 	public List<SubjectMarks> getSubjectMarks(int rollNumber,int session,int examId)
 	{
-		String sql="SELECT r.marks, e.total_marks,s.subject_name FROM rollno_subject r,exams e,subject s WHERE r.rollno=? AND e.exam_id=? AND e.class_id in (SELECT class_id from class where session_begin=? ) AND s.subject_code=e.subject_id";
+		String sql="SELECT r.marks, e.total_marks,s.subject_name FROM rollno_subject r,exams e,subject s WHERE r.rollno=? AND e.exam_id=? AND e.class_id in (SELECT class_id from class where session_begin=? ) AND s.subject_code=e.subject_id AND r.exam_no=e.exam_no";
 		List<SubjectMarks> subjectList=null;
 		try{
 		connect=dataSource.getConnection();

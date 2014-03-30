@@ -13,6 +13,8 @@ delete column course
 validation
 branches loose coupling
 
-
+parents notification
+fee schedule will upload a notice
+phone html length -1
 
 submit marks -- class id can be added, year removed.

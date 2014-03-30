@@ -13,6 +13,9 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.studentmanagement.components.Notice;
 
 public class NoticeManager {
@@ -132,6 +135,27 @@ public class NoticeManager {
 			close();
 		}
 		return notice;
+	}
+	public int deleteNotice(int noticeId)
+	{
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String name = auth.getName();
+	    String sql="DELETE FROM notice WHERE notice_id=? AND author=?";
+	    try{
+	    	connect=dataSource.getConnection();
+	    	statement=connect.prepareStatement(sql);
+	    	statement.setInt(1, noticeId);
+	    	statement.setString(2, name);
+	    	
+	    	return statement.executeUpdate();
+	    	
+	    }catch(Exception ex)
+	    {
+	    	ex.printStackTrace();
+	    }finally{
+	    		close();
+	    		}
+	    return 0;
 	}
 
 	private void close() {
