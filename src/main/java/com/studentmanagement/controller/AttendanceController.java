@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.components.RollList;
 import com.studentmanagement.databasemanager.AttendanceSubmitter;
+import com.studentmanagement.databasemanager.BranchManager;
 import com.studentmanagement.databasemanager.StudentListGenerator;
 import com.studentmanagement.databasemanager.SubjectsChooser;
 
@@ -54,6 +55,9 @@ public class AttendanceController {
 	{
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		Map<String, String> subjectMap=new SubjectsChooser(dataSource).getAllSubjects();
+		BranchManager branchManager=new BranchManager(dataSource);
+		Map<String,String> branchMap = branchManager.getSubjects();
+		model.addAttribute("branchmap",branchMap);
 		model.addAttribute("currentYear", new Integer(year));
 		model.addAttribute("subjectsMap", subjectMap);
 		return "selectattendance";

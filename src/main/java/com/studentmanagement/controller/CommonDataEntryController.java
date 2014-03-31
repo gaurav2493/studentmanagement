@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.studentmanagement.databasemanager.BranchManager;
 import com.studentmanagement.databasemanager.NewStuffAdder;
 import com.studentmanagement.databasemanager.SubjectsChooser;
 
@@ -43,8 +44,11 @@ public class CommonDataEntryController {
 		return "submitted";
 	}
 	@RequestMapping(value="/addstudent")
-	public String addStudent()
+	public String addStudent(ModelMap model)
 	{
+		BranchManager branchManager=new BranchManager(dataSource);
+		Map<String,String> branchMap = branchManager.getSubjects();
+		model.addAttribute("branchmap",branchMap);
 		return "addstudent";
 	}
 	

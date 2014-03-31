@@ -40,12 +40,9 @@ $(document).ready(function(){
 		<tr>
 			<td>Branch</td>
 			<td><select name="branch" class="form-control">
-					<option value='cse'>CSE</option>
-					<option value='it'>IT</option>
-					<option value='me'>ME</option>
-					<option value='ce'>CE</option>
-					<option value='ic'>IC</option>
-					<option value='mt'>MT</option>
+					<c:forEach var="entry" items="${branchmap }">
+					<option value='${entry.getKey() }'>${entry.getValue() }</option>
+				</c:forEach>
 			</select></td>
 		</tr>
 		<tr>

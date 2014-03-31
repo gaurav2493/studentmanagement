@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.studentmanagement.components.StudentsSubjectMarks;
+import com.studentmanagement.databasemanager.BranchManager;
 import com.studentmanagement.databasemanager.ExamReports;
 import com.studentmanagement.databasemanager.ParentNotifier;
 import com.studentmanagement.databasemanager.StudentListGenerator;
@@ -58,11 +59,14 @@ public class AcademicMarksController {
 	{
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		Map<String, String> subjectMap=new SubjectsChooser(dataSource).getAllSubjects();
+		BranchManager branchManager=new BranchManager(dataSource);
+		Map<String,String> branchMap = branchManager.getSubjects();
+		model.addAttribute("branchmap",branchMap);
 		model.addAttribute("currentYear", new Integer(year));
 		model.addAttribute("subjectsMap", subjectMap);
 		return "uploadmarks";
 	}
-	@RequestMapping(value="/academicreports/uploadmarks/insertmarks",method=RequestMethod.GET )
+	@RequestMapping(value="/academicreports/uploadmarks/insertmarks",method=RequestMethod.POST )
 	public String insertmarks(ModelMap model,@RequestParam Map<String,String> allRequestParams,HttpServletRequest request)
 	{
 		StudentListGenerator studentListGenerator=new StudentListGenerator(dataSource, allRequestParams);
@@ -94,6 +98,9 @@ public class AcademicMarksController {
 	{
 		int year = Calendar.getInstance().get(Calendar.YEAR);
 		Map<String, String> subjectMap=new SubjectsChooser(dataSource).getAllSubjects();
+		BranchManager branchManager=new BranchManager(dataSource);
+		Map<String,String> branchMap = branchManager.getSubjects();
+		model.addAttribute("branchmap",branchMap);
 		model.addAttribute("currentYear", new Integer(year));
 		model.addAttribute("subjectsMap", subjectMap);
 		return "viewmarks";
@@ -104,6 +111,11 @@ public class AcademicMarksController {
 		ExamReports examReports=new ExamReports(dataSource);
 		int examid=(Integer)request.getSession().getAttribute("examid");
 		List<StudentsSubjectMarks> list = examReports.getStudentsSubjectMarksList(allRequestParams,examid);
+		if(list.size()==0)
+		{
+			model.addAttribute("message", "The class you are looking for is not found.<br/> If you are sure this is your class, create a new class from left sidebar");
+			return "somethingwentwrong";
+		}
 		model.addAttribute("subjectmarkslist", list);
 		
 		return "viewfetchedmarks";

@@ -28,8 +28,8 @@ $(document).ready(function() {
 
 <form method="post" action="<c:url value="/notice/uploadnotice" />" id="iploadForm" enctype="multipart/form-data">
  
- 	<input type="text" name="subject" class='form-control' placeholder="Enter subject"/><br/>
-	<textarea name="content"></textarea><br/>
+ 	<input type="text" name="subject" class='form-control' placeholder="Enter subject" value="${subject }"/><br/>
+	<textarea name="content">${body }</textarea><br/>
 	
 	
    

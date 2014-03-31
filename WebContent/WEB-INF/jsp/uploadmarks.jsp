@@ -1,12 +1,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<script>
+function selectclassvalidate()
+{
+	var ses=document.getElementsByName("session")[0].value;
+	if(ses=="session")
+	{
+		alert('Select Session First');
+		return false;
+	}
+	return true;
+}
+</script>
 <h3>Choose Your Class</h3>
 <br />
-<form action='<c:url value="/academicreports/uploadmarks/insertmarks" />' method="get">
+<form action='<c:url value="/academicreports/uploadmarks/insertmarks" />' method="post" onsubmit="return selectclassvalidate();">
 	<table class="table table-striped">
 		<tr>
 			<td>Session</td>
 			<td><Select name="session" class="form-control">
-					<option>Session</option>
+					<option value="session">Session</option>
 					<option value="${currentYear-1}">${currentYear-1} - ${currentYear}</option>
 					<option value="${currentYear}">${currentYear} - ${currentYear+1}</option>
 					<option value="${currentYear+1}">${currentYear+1} - ${currentYear+2}</option>
@@ -14,12 +26,9 @@
 		<tr>
 			<td>Branch</td>
 			<td><select name="branch" class="form-control">
-					<option value='cse'>CSE</option>
-					<option value='it'>IT</option>
-					<option value='me'>ME</option>
-					<option value='ce'>CE</option>
-					<option value='ic'>IC</option>
-					<option value='mt'>MT</option>
+					<c:forEach var="entry" items="${branchmap }">
+					<option value='${entry.getKey() }'>${entry.getValue() }</option>
+				</c:forEach>
 			</select></td>
 		<tr>
 			<td>Year</td>

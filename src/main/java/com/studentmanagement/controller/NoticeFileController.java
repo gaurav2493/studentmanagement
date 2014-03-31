@@ -152,5 +152,12 @@ public class NoticeFileController {
 		noticeManager.deleteNotice(noticeid);
 		return "submitted";
 	}
-
+	@RequestMapping(value="/notice/feeschedules")
+	public String addFeeSchedule(ModelMap model)
+	{
+		model.addAttribute("subject", "Fee Schedule for Year - ");
+		model.addAttribute("body", "Fee Schedule for Year - <br/>could be found in the attached document.<br/><font color='red'>Please Contact Account section for furthur clarifications</font>");
+		return "file_upload_form";
+	}
+	
 }

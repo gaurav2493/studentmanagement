@@ -7,7 +7,33 @@ var subjectOptions="<c:forEach var="entry" items="${subjectsMap}"><option value=
 
 
 <script type="text/javascript">
+var fieldsCreated=false;
+var n;
 
+
+function validateRollno(roll)
+{
+	return true;
+}
+function validatenewclass()
+{
+	if(fieldsCreated==false){
+		var nostudent=document.getElementById("nostudents").value;
+		var nosubjects=document.getElementById("nosubjects").value;
+		
+		if(nostudent>0 && nosubjects>0)
+		{
+			createSubjectFields();
+			createStudentFields();
+			fieldsCreated=true;
+		}
+		else
+			alert("Enter no of students and subjects");
+		return false;
+	}
+	return true;
+	
+}
 	function createSubjectFields() {
 		var n = document.getElementById("nosubjects").value;
 		document.getElementById("hid1").value=n;
@@ -21,12 +47,12 @@ var subjectOptions="<c:forEach var="entry" items="${subjectsMap}"><option value=
 		document.getElementById("div1").style.display='block';
 	}
 	function createStudentFields() {
-		var n = document.getElementById("nostudents").value;
+		n = document.getElementById("nostudents").value;
 		document.getElementById("hid0").value=n;
 		var i;
 		var subfields="<table class='table table-striped'>";
 		for (i = 0; i < n; i++) {
-			subfields+="<tr><td>Student - "+(i+1)+"</td><td><input type='text' name='stu"+i+"' class='form-control' placeholder='Roll no' list='searchresults' autocomplete='off' id='search"+i+"'/><datalist id='searchresults'></datalist></td></tr>";
+			subfields+="<tr><td>Student - "+(i+1)+"</td><td><input type='text' name='stu"+i+"' class='form-control' placeholder='Roll no' list='searchresults' autocomplete='off' id='search"+i+"' onfocusout='validateRollno(this)'/><datalist id='searchresults'></datalist></td></tr>";
 		}
 		subfields+="</table>";
 		document.getElementById("roll-fields").innerHTML=subfields;
@@ -57,8 +83,9 @@ dataList.append(opt);
 }
 }
 	}
+	
 </script>
-<form action='submit_new_class' method='post'>
+<form action='submit_new_class' method='post' onsubmit='return validatenewclass()'>
 
 	<div class="panel panel-default">
 		<div class="panel-heading">Enter new Class Detail</div>
@@ -108,15 +135,11 @@ dataList.append(opt);
 				</tr>
 				<tr>
 					<td>Number of subjects</td>
-					<td><input type="number" id="nosubjects" class="form-control" /></td>
-					<td><input type="button" onclick="createSubjectFields()"
-						value="Generete Fields" class="form-control" /></td>
+					<td><input type="number" id="nosubjects" class="form-control" /></td>					
 				</tr>
 				<tr>
 					<td>No of students</td>
 					<td><input type="number" id="nostudents" class="form-control" /></td>
-					<td><input type="button" onclick="createStudentFields()"
-						value="Generete Fields" class="form-control" /></td>
 				</tr>
 			</table>
 		</div>
