@@ -9,6 +9,47 @@ var subjectOptions="<c:forEach var="entry" items="${subjectsMap}"><option value=
 <script type="text/javascript">
 var fieldsCreated=false;
 var n;
+function checkDuplicateSubject()
+{
+	var arr=[];
+	var n=document.getElementById("nosubjects").value;
+   for (var i=0; i<n; i++) {
+     var subject=document.getElementsByName("sub"+i)[0].value;
+     arr[i]=subject;
+   }
+	arr.sort();
+	var last = arr[0];
+	for (var i=1; i<arr.length; i++) {
+   		if (arr[i] == last){alert('a subject is repeatd twice');
+   		return false;
+   		}
+   		last = arr[i];
+	}
+	return true;
+}
+function checkDuplicateRollno()
+{
+    var arr=[];
+	var n=document.getElementById("nostudents").value;
+   for (var i=0; i<n; i++) {
+     var rollno=document.getElementsByName("stu"+i)[0].value;
+     if(rollno.length==0)
+     {
+     	alert("Roll no field can't be left blank");
+     	return false;
+     }
+     arr[i]=rollno;
+   }
+	arr.sort();
+	var last = arr[0];
+	for (var i=1; i<arr.length; i++) {
+   		if (arr[i] == last){alert('Roll no cannot be repeated twice');
+   		return false;
+   		}
+   		last = arr[i];
+	}
+	return true;
+}
 
 
 function validateRollno(roll)
@@ -25,13 +66,17 @@ function validatenewclass()
 		{
 			createSubjectFields();
 			createStudentFields();
+			document.getElementById("nostudents").setAttribute("disabled",true);
+			document.getElementById("nosubjects").setAttribute("disabled",true);
 			fieldsCreated=true;
 		}
 		else
 			alert("Enter no of students and subjects");
 		return false;
 	}
-	return true;
+	if(checkDuplicateSubject())
+	  return checkDuplicateRollno();
+	return false;
 	
 }
 	function createSubjectFields() {
