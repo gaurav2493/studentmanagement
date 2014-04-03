@@ -94,12 +94,9 @@ dataList.append(opt);
 				<tr>
 					<td>Branch</td>
 					<td><select name="branch" class="form-control">
-							<option value='cse'>CSE</option>
-							<option value='it'>IT</option>
-							<option value='me'>ME</option>
-							<option value='ce'>CE</option>
-							<option value='ic'>IC</option>
-							<option value='mt'>MT</option>
+							<c:forEach var="entry" items="${branchmap }">
+					<option value='${entry.getKey() }'>${entry.getValue() }</option>
+				</c:forEach>
 					</select></td>
 				</tr>
 				<tr>
@@ -157,4 +154,4 @@ dataList.append(opt);
 	<input type='hidden' name='nostudents' id='hid0' /> <input
 		type='hidden' name='nosubjects' id='hid1' /> <Input type='submit'
 		class="btn btn-default" />
-</form>
+</form><br/><br/>
