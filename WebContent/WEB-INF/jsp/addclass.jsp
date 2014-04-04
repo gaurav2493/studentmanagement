@@ -35,11 +35,9 @@ function allTicksDone()
 		docElement=document.getElementById("img"+i).getAttribute("src");
 		if(docElement==null || docElement.indexOf("tick")<0)
 		{
-			alert("false");
 			return false;
 		}		
 	}
-	alert("true");
 	return true;
 	
 }
@@ -77,7 +75,7 @@ function checkDuplicateRollno()
 	arr.sort();
 	var last = arr[0];
 	for (var i=1; i<arr.length; i++) {
-   		if (arr[i] == last){alert('Roll no cannot be repeated twice');
+   		if (arr[i] == last){alert('Roll no '+arr[i]+' have been repeated');
    		return false;
    		}
    		last = arr[i];
